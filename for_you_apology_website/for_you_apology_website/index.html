@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080609">
+  <title>A Little Something For You ❤️</title>
+  <style>
+    :root { --pink:#ff9eb5; --soft:#f5dce3; --muted:#c7b9c0; --panel:#151116; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body {
+      min-height:100vh; background:#080609; color:#fff;
+      font-family: Georgia, "Times New Roman", serif; overflow-x:hidden;
+    }
+    body::before {
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+      background: radial-gradient(ellipse at 50% 15%, #321724 0%, #130d14 42%, #080609 78%);
+    }
+    #particles { position:fixed; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+    .spark { position:absolute; color:#ffb7c8; opacity:.5; animation: drift linear infinite; }
+    @keyframes drift { from { transform:translateY(105vh) rotate(0); opacity:0; } 15%{opacity:.55} to { transform:translateY(-10vh) rotate(220deg); opacity:0; } }
+    .screen {
+      position:relative; z-index:1; min-height:100svh; padding:72px 22px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; animation: appear .8s ease both;
+    }
+    .hidden { display:none !important; }
+    @keyframes appear { from { opacity:0; transform:translateY(14px); } to {opacity:1; transform:none;} }
+    .eyebrow { color:var(--pink); letter-spacing:.22em; text-transform:uppercase; font:11px Arial,sans-serif; margin-bottom:18px; }
+    h1 { color:#ffe4eb; font-size:clamp(2.3rem,8vw,5rem); font-weight:normal; line-height:1.08; margin-bottom:20px; }
+    h2 { color:var(--pink); font-size:clamp(1.45rem,4vw,2rem); font-weight:normal; margin-bottom:14px; }
+    p { color:var(--muted); line-height:1.85; font-size:1.04rem; max-width:680px; margin:10px auto; }
+    .heart { font-size:54px; display:inline-block; margin-bottom:22px; filter:drop-shadow(0 0 22px #ff668c88); animation:pulse 1.6s infinite; }
+    @keyframes pulse { 50% { transform:scale(1.16); } }
+    .btn {
+      margin:26px 8px 0; padding:14px 25px; border:1px solid #d77c99;
+      border-radius:999px; color:#ffe5ec; background:#24131d; cursor:pointer;
+      font:14px Arial,sans-serif; letter-spacing:.04em; transition:.25s;
+    }
+    .btn:hover { background:var(--pink); color:#180b11; transform:translateY(-2px); box-shadow:0 8px 28px #ff8ba533; }
+    .memories { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; width:min(960px,100%); margin:28px auto 0; }
+    .memory { background:#171219d9; border:1px solid #49303b; border-radius:18px; padding:14px; text-align:left; transition:.25s; }
+    .memory:hover { transform:translateY(-5px); border-color:#d77c99; }
+    .memory img { width:100%; height:190px; object-fit:cover; border-radius:11px; display:block; background:#261a22; }
+    .memory h2 { font-size:1.25rem; margin:16px 3px 6px; }
+    .memory p { font-size:.94rem; margin:0 3px 5px; line-height:1.65; }
+    .letter {
+      width:min(760px,100%); padding:clamp(24px,5vw,48px); text-align:left;
+      border:1px solid #654050; border-radius:20px; background:linear-gradient(145deg,#1b141b,#100d12);
+      box-shadow:0 18px 70px #0008, 0 0 45px #b34e7130;
+    }
+    .letter p { white-space:pre-line; max-width:none; color:#e0d4da; }
+    #letterText { min-height:220px; }
+    .signature { color:var(--pink); margin-top:25px; font-style:italic; }
+    .final-note { border-top:1px solid #50313d; padding-top:22px; margin-top:24px; }
+    footer { position:relative; z-index:1; text-align:center; color:#796c74; font:11px Arial,sans-serif; padding:20px; letter-spacing:.08em; }
+    @media(max-width:720px) { .memories { grid-template-columns:1fr; max-width:420px; } .memory img {height:220px;} }
+    @media(prefers-reduced-motion:reduce) { *,*::before,*::after {animation-duration:.01ms!important; animation-iteration-count:1!important; scroll-behavior:auto!important;} }
+  </style>
+</head>
+<body>
+  <div id="particles" aria-hidden="true"></div>
+
+  <main>
+    <section class="screen" id="welcome">
+      <div class="heart">♡</div>
+      <div class="eyebrow">A little something, just for you</div>
+      <h1>Hey, you.</h1>
+      <p>I made this small corner of the internet for you.<br>Take your time. There’s no rush.</p>
+      <button class="btn" onclick="showScreen('memories')">Open your little surprise ✨</button>
+    </section>
+
+    <section class="screen hidden" id="memories">
+      <div class="eyebrow">The moments I keep close</div>
+      <h1>Little memories</h1>
+      <p>Some moments may seem small at the time, but they can become the ones we remember most.</p>
+      <div class="memories">
+        <article class="memory">
+          <img src="assets/memory1.jpg" alt="Add a photo of a favorite memory" onerror="this.style.display='none'">
+          <h2>That special day</h2><p>A moment I’m glad became part of my story.</p>
+        </article>
+        <article class="memory">
+          <img src="assets/memory2.jpg" alt="Add a photo of another favorite memory" onerror="this.style.display='none'">
+          <h2>Your smile</h2><p>A little thing that could make an ordinary day brighter.</p>
+        </article>
+        <article class="memory">
+          <img src="assets/memory3.jpg" alt="Add a photo of another favorite memory" onerror="this.style.display='none'">
+          <h2>The little things</h2><p>The talks, laughter, and simple moments that meant a lot.</p>
+        </article>
+      </div>
+      <button class="btn" onclick="showScreen('letter')">There’s something I want to say 💌</button>
+    </section>
+
+    <section class="screen hidden" id="letter">
+      <div class="eyebrow">A note from my heart</div>
+      <h1>Dear you,</h1>
+      <article class="letter">
+        <h2>A few honest words</h2>
+        <p id="letterText"></p>
+        <p class="signature">With sincerity,<br>Someone who cares about you.</p>
+      </article>
+      <button class="btn" onclick="showScreen('final')">One last thing…</button>
+    </section>
+
+    <section class="screen hidden" id="final">
+      <div class="heart">♡</div>
+      <div class="eyebrow">Before you go</div>
+      <h1>Thank you for the memories.</h1>
+      <p>I’m sorry for the ways I may have hurt or disappointed you. I know an apology cannot undo what happened, and I don’t expect everything to feel okay right away.</p>
+      <p>I just wanted to be honest, to say that the good moments mattered to me, and that I’m willing to learn from the things I could have handled better.</p>
+      <div class="final-note"><h2>Take all the time you need. ❤️</h2><p>No pressure to reply. I simply wanted you to know.</p></div>
+      <button class="btn" onclick="location.reload()">Read it again ↻</button>
+    </section>
+  </main>
+
+  <footer>MADE WITH SINCERITY · ❤️</footer>
+
+  <script>
+    // PERSONALIZE THIS LETTER BEFORE PUBLISHING.
+    const message = `I’m not sure there is a perfect way to begin, but I want to start by saying I’m truly sorry.
+
+I’m sorry for the things I said or did that may have hurt you. I understand that words alone cannot fix everything, and I don’t want this letter to be just a way of saying sorry without meaning it.
+
+I want you to know that I appreciate the moments we’ve shared — the conversations, the laughter, the little details, and the memories that still make me smile. They genuinely mean something to me.
+
+If I could revisit certain moments, I would handle some things differently. I can’t change what has already happened, but I can take responsibility, learn, and do better.
+
+I’m not asking you to forget anything or to forgive me right away. I only hope you can read this knowing that it comes from a sincere place.
+
+Thank you for being part of those wonderful moments. And once again, I’m sorry.`;
+
+    let hasTyped = false;
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+      window.scrollTo({top:0, behavior:'smooth'});
+      if (id === 'letter') typeLetter();
+    }
+    function typeLetter() {
+      if (hasTyped) return;
+      hasTyped = true;
+      const target = document.getElementById('letterText');
+      let i = 0;
+      function tick() {
+        if (i < message.length) {
+          target.textContent += message.charAt(i++);
+          setTimeout(tick, 24);
+        }
+      }
+      tick();
+    }
+    const particles = document.getElementById('particles');
+    function makeSpark() {
+      const el = document.createElement('span');
+      el.className = 'spark';
+      el.textContent = Math.random() > .5 ? '✦' : '·';
+      el.style.left = Math.random()*100 + 'vw';
+      el.style.fontSize = (10+Math.random()*15) + 'px';
+      el.style.animationDuration = (8+Math.random()*9) + 's';
+      particles.appendChild(el);
+      setTimeout(() => el.remove(), 18000);
+    }
+    for (let i=0;i<18;i++) makeSpark();
+    setInterval(makeSpark, 850);
+  </script>
+</body>
+</html>
